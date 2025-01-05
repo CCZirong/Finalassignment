@@ -1,10 +1,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Python template
 =======
 >>>>>>> e484ce64ec8f2bd3a732d2deba756371a4afa119
 =======
 >>>>>>> 5dfb4cb6d6424beea5f068c4092617d4a1ac3639
+=======
+>>>>>>> 4552f50e839088505e9202f3012231dd413b2390
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -103,9 +106,12 @@ ipython_config.py
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 5dfb4cb6d6424beea5f068c4092617d4a1ac3639
+=======
+>>>>>>> 4552f50e839088505e9202f3012231dd413b2390
 # UV
 #   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
@@ -113,9 +119,12 @@ ipython_config.py
 #uv.lock
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> e484ce64ec8f2bd3a732d2deba756371a4afa119
 =======
 >>>>>>> 5dfb4cb6d6424beea5f068c4092617d4a1ac3639
+=======
+>>>>>>> 4552f50e839088505e9202f3012231dd413b2390
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
@@ -130,19 +139,25 @@ ipython_config.py
 #   in version control.
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #   https://pdm.fming.dev/#use-with-ide
 .pdm.toml
 =======
 =======
 >>>>>>> 5dfb4cb6d6424beea5f068c4092617d4a1ac3639
+=======
+>>>>>>> 4552f50e839088505e9202f3012231dd413b2390
 #   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
 .pdm.toml
 .pdm-python
 .pdm-build/
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> e484ce64ec8f2bd3a732d2deba756371a4afa119
 =======
 >>>>>>> 5dfb4cb6d6424beea5f068c4092617d4a1ac3639
+=======
+>>>>>>> 4552f50e839088505e9202f3012231dd413b2390
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
@@ -192,6 +207,7 @@ cython_debug/
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+<<<<<<< HEAD
 .idea/
 
 <<<<<<< HEAD
@@ -204,3 +220,9 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 >>>>>>> 5dfb4cb6d6424beea5f068c4092617d4a1ac3639
+=======
+#.idea/
+
+# PyPI configuration file
+.pypirc
+>>>>>>> 4552f50e839088505e9202f3012231dd413b2390
