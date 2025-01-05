@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 专科大数据技术数据可视化技术期末作业
 ### 数据库安装
 
@@ -173,7 +172,3 @@ $ redis-cli -h <IP> -p 6379 -a <PASSWORD> KEYS "*"
 $ redis-cli -h <IP> -p 6379 -a <PASSWORD> SCAN 0 MATCH "*"
 ```
 
-=======
-# Finalassignment
-专科大数据技术数据可视化技术期末作业
->>>>>>> 4552f50e839088505e9202f3012231dd413b2390
