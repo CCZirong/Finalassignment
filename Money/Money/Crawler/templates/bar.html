@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.zirongsblog.asia/admin/favicon.ico" type="image/x-icon">
+    <title>柱状图 - 股票价格对比</title>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/public.css' %}">
+    <script src="{% static 'js/common.js' %}"></script>
+</head>
+<body>
+<h1>柱状图 - 股票价格对比</h1>
+<p id="beijing-time"></p>
+
+<div class="data-menu" role="navigation" aria-label="Data Selection Menu">
+    <button class="data-button" onclick="toggleDataOptions()" aria-expanded="false" aria-controls="dataOptions">
+        选择展示数据 <span id="dataArrow" class="arrow" aria-hidden="true">▲</span>
+    </button>
+    <div class="data-options" id="dataOptions" role="menu" aria-hidden="true">
+        <button role="menuitem" onclick="toggleStockOptions('hk')">港股</button>
+        <button role="menuitem" onclick="toggleStockOptions('us')">美股</button>
+        <button role="menuitem" onclick="toggleStockOptions('uk')">英股</button>
+    </div>
+</div>
+
+<div class="chart-container">
+    <div class="loading-spinner" id="loadingSpinner"></div>
+    {{ chart_bar | safe }}
+</div>
+
+<div class="pagination-buttons">
+    <button onclick="window.location.href='{% url 'line' %}'">下一页</button>
+</div>
+
+<div class="home-button">
+    <button onclick="window.location.href='/';">首页</button>
+</div>
+
+<div class="export-menu">
+    <button class="export-button" onclick="toggleExportOptions()">导出数据 <span id="arrow" class="arrow">▲</span>
+    </button>
+    <div class="export-options" id="exportOptions">
+        <button onclick="exportData('csv')">导出为 CSV</button>
+        <button onclick="exportData('pdf')">导出为 PDF</button>
+    </div>
+</div>
+</body>
+<script>
+    function toggleDataOptions() {
+        const options = document.getElementById('dataOptions');
+        const arrow = document.getElementById('dataArrow');
+        const button = document.querySelector('.data-button');
+
+        const isExpanded = options.classList.contains('show');
+        options.classList.toggle('show');
+        arrow.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+
+        button.setAttribute('aria-expanded', !isExpanded);
+        options.setAttribute('aria-hidden', isExpanded);
+    }
+
+    document.addEventListener('click', function (event) {
+        const options = document.getElementById('dataOptions');
+        const button = document.querySelector('.data-button');
+
+        if (!button.contains(event.target) && !options.contains(event.target)) {
+            options.classList.remove('show');
+            document.getElementById('dataArrow').style.transform = 'rotate(0deg)';
+            button.setAttribute('aria-expanded', false);
+            options.setAttribute('aria-hidden', true);
+        }
+    });
+
+    function toggleStockOptions(stockType) {
+        let tableName;
+        let buttonText;
+        switch (stockType) {
+            case 'hk':
+                tableName = 'hong_kong_stocks';
+                buttonText = '港股';
+                break;
+            case 'us':
+                tableName = 'US_shares_stocks';
+                buttonText = '美股';
+                break;
+            case 'uk':
+                tableName = 'Britain_stocks';
+                buttonText = '英股';
+                break;
+            default:
+                tableName = 'hong_kong_stocks';
+                buttonText = '选择展示数据';
+        }
+
+        const button = document.querySelector('.data-button');
+        button.innerHTML = `${buttonText} <span id="dataArrow" class="arrow" aria-hidden="true">▲</span>`;
+
+        window.location.href = `{% url 'bar' %}?table=${tableName}`;
+    }
+
+    function setButtonTextFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const table = urlParams.get('table') || 'hong_kong_stocks';
+        let buttonText;
+
+        switch (table) {
+            case 'hong_kong_stocks':
+                buttonText = '港股';
+                break;
+            case 'US_shares_stocks':
+                buttonText = '美股';
+                break;
+            case 'Britain_stocks':
+                buttonText = '英股';
+                break;
+            default:
+                buttonText = '选择展示数据';
+        }
+
+        const button = document.querySelector('.data-button');
+        button.innerHTML = `${buttonText} <span id="dataArrow" class="arrow" aria-hidden="true">▲</span>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', setButtonTextFromURL);
+
+    function exportData(format) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const table = urlParams.get('table') || 'hong_kong_stocks';
+        let exportUrl;
+
+        if (format === 'csv') {
+            exportUrl = `{% url 'export_csv' %}`;
+        } else if (format === 'pdf') {
+            exportUrl = `{% url 'export_pdf' %}`;
+        }
+
+        window.location.href = `${exportUrl}?table=${table}`;
+    }
+
+</script>
+</html>
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.zirongsblog.asia/admin/favicon.ico" type="image/x-icon">
+    <title>首页</title>
+    <script src="{% static 'js/index_utils.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/index_utils.css' %}">
+</head>
+
+<body>
+
+<!-- 页头 -->
+<header>
+    <h1>欢迎来到东方财富股票行情数据可视化网站</h1>
+    <p>在这里，您可以查看实时股票价格、趋势图和股票占比分析</p>
+    <p id="countdown"></p>
+</header>
+
+<!-- 主内容区域 -->
+<div class="container">
+    <div class="main-content">
+        <!-- 卡片1 -->
+        <div class="card">
+            <h2>折线图 - 股票价格变化趋势</h2>
+            <p>通过折线图查看股票价格的变化趋势，帮助您掌握市场动态。</p>
+            <a href="{% url 'line' %}" style="text-decoration: none; color: #007bff;">查看折线图详情 ></a>
+        </div>
+        <!-- 卡片2 -->
+        <div class="card">
+            <h2>柱状图 - 股票价格对比</h2>
+            <p>使用柱状图对比不同股票的价格，助您做出明智的投资决策。</p>
+            <a href="{% url 'bar' %}" style="text-decoration: none; color: #007bff;">查看柱状图详情 ></a>
+        </div>
+        <!-- 卡片3 -->
+        <div class="card">
+            <h2>面积填充折线图 - 价格趋势</h2>
+            <p>通过带面积填充的折线图，直观展示股票价格的变化范围。</p>
+            <a href="{% url 'line_with_area' %}" style="text-decoration: none; color: #007bff;">查看面积填充图详情 ></a>
+        </div>
+        <!-- 卡片4 -->
+        <div class="card">
+            <h2>散点图 - 股票数据分析</h2>
+            <p>利用散点图分析股票数据，发现潜在的市场趋势。</p>
+            <a href="{% url 'scatter' %}" style="text-decoration: none; color: #007bff;">查看散点图详情 ></a>
+        </div>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer>
+    <p>&copy; 2024 Copyright<a href="https://baidu.com/">子荣有点东西</a></p>
+</footer>
+</body>
+</html>
